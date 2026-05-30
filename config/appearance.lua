@@ -1,9 +1,10 @@
 local gpu_adapters = require('utils.gpu-adapter')
 local backdrops = require('utils.backdrops')
 local colors = require('colors.custom')
+local platform = require('utils.platform')
 
 ---@type Config
-return {
+local options = {
    max_fps = 120,
    front_end = 'WebGpu', ---@type 'WebGpu' | 'OpenGL' | 'Software'
    webgpu_power_preference = 'HighPerformance',
@@ -73,3 +74,11 @@ return {
       target = 'CursorColor',
    },
 }
+
+-- macOS-specific appearance
+if platform.is_mac then
+   options.macos_window_backdrop = 'Dark'
+   options.hide_tab_bar_if_only_one_tab = true
+end
+
+return options
