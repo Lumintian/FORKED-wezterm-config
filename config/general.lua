@@ -1,5 +1,7 @@
+local platform = require('utils.platform')
+
 ---@type Config
-return {
+local options = {
    -- behaviours
    automatically_reload_config = true,
    exit_behavior = 'CloseOnCleanExit', -- if the shell program exited with a successful status
@@ -46,3 +48,10 @@ return {
       },
    },
 }
+
+-- macOS-specific settings
+if platform.is_mac then
+   options.native_macos_fullscreen_mode = true
+end
+
+return options
