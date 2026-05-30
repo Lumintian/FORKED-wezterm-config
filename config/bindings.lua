@@ -60,8 +60,16 @@ local keys = {
    { key = 'c',          mods = 'CTRL|SHIFT',  action = act.CopyTo('Clipboard') },
    { key = 'v',          mods = 'CTRL|SHIFT',  action = act.PasteFrom('Clipboard') },
 
-   -- macOS native app shortcuts --
-   { key = 'q',          mods = mod.SUPER,     action = act.QuitApplication },
+   -- macOS native app shortcuts (Cmd+Q requires double-press to quit) --
+   {
+      key = 'q',
+      mods = mod.SUPER,
+      action = act.ActivateKeyTable({
+         name = 'quit_confirm',
+         one_shot = true,
+         timeout_milliseconds = 1200,
+      }),
+   },
    { key = 'h',          mods = mod.SUPER,     action = act.HideApplication },
 
    { key = 'n',          mods = 'CTRL|SHIFT',  action = act.SendString('\u{2660}') },
@@ -247,6 +255,10 @@ local key_tables = {
       { key = 'r',      action = act.ResetFontSize },
       { key = 'Escape', action = 'PopKeyTable' },
       { key = 'q',      action = 'PopKeyTable' },
+   },
+   quit_confirm = {
+      { key = 'q',      mods = mod.SUPER, action = act.QuitApplication },
+      { key = 'Escape', action = 'PopKeyTable' },
    },
    resize_pane = {
       { key = 'k',      action = act.AdjustPaneSize({ 'Up', 1 }) },
