@@ -77,7 +77,7 @@ local options = {
 
 -- macOS-specific appearance
 if platform.is_mac then
-   options.macos_window_backdrop = 'Dark'
+   options.macos_window_background_blur = 20
    options.hide_tab_bar_if_only_one_tab = true
 end
 
