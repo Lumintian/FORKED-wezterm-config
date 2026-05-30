@@ -54,9 +54,15 @@ local keys = {
    { key = 'RightArrow', mods = mod.SUPER,     action = act.SendString('\u{1b}OF') },
    { key = 'Backspace',  mods = mod.SUPER,     action = act.SendString('\u{15}') },
 
-   -- copy/paste --
+   -- copy/paste (macOS native: Cmd+C / Cmd+V; others: Ctrl+Shift+C / Ctrl+Shift+V) --
+   { key = 'c',          mods = mod.SUPER,     action = act.CopyTo('Clipboard') },
+   { key = 'v',          mods = mod.SUPER,     action = act.PasteFrom('Clipboard') },
    { key = 'c',          mods = 'CTRL|SHIFT',  action = act.CopyTo('Clipboard') },
    { key = 'v',          mods = 'CTRL|SHIFT',  action = act.PasteFrom('Clipboard') },
+
+   -- macOS native app shortcuts --
+   { key = 'q',          mods = mod.SUPER,     action = act.QuitApplication },
+   { key = 'h',          mods = mod.SUPER,     action = act.HideApplication },
 
    { key = 'n',          mods = 'CTRL|SHIFT',  action = act.SendString('\u{2660}') },
    { key = 's',          mods = 'CTRL|SHIFT',  action = act.SendString('\u{203D}') },
