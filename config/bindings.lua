@@ -73,9 +73,12 @@ local keys = {
    { key = 't',          mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName = 'wsl:ubuntu-fish' }) },
    { key = 'w',          mods = mod.SUPER_REV, action = act.CloseCurrentTab({ confirm = false }) },
 
-   -- tabs: navigation
+   -- tabs: navigation (Cmd+[ / Cmd+])
    { key = '[',          mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
    { key = ']',          mods = mod.SUPER,     action = act.ActivateTabRelative(1) },
+   -- tabs: navigation (Ctrl+Tab / Ctrl+Shift+Tab — Windows style)
+   { key = 'Tab',        mods = 'CTRL',        action = act.ActivateTabRelative(1) },
+   { key = 'Tab',        mods = 'CTRL|SHIFT',  action = act.ActivateTabRelative(-1) },
    { key = '[',          mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
    { key = ']',          mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
 
